@@ -1,1 +1,1 @@
-site_uses_local_db: "{{ site_env.db_host == 'localhost' }}"
+site_uses_local_db: True

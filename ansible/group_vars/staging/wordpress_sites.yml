@@ -3,13 +3,11 @@
 # Define accompanying passwords/secrets in group_vars/staging/vault.yml
 
 wordpress_sites:
-  naturemed.org:
+  dev.naturemed.org:
     site_hosts:
-      - canonical: staging.naturemed.dev
-        # redirects:
-        #   - otherdomain.com
+      - canonical: dev.naturemed.dev
     local_path: ../site # path targeting local Bedrock site directory (relative to Ansible root)
-    repo: git@github.com:example/example.com.git # replace with your Git repo URL
+    repo: git@github.com:jeffdeville/naturemed.org.git # replace with your Git repo URL
     repo_subtree_path: site # relative path to your Bedrock/WP directory in your repo
     branch: master
     multisite:
