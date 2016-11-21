@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "852d187e2c03aba6d28f01c7e0217429",
-    "content-hash": "0082e218a4b82c75e6f23361939cb6ee",
+    "hash": "6fc826dfabf0e531b2b01dfe368e49de",
+    "content-hash": "b4edf7e068f01ac756681274fbf8dd49",
     "packages": [
         {
             "name": "composer/installers",
@@ -404,6 +404,26 @@
                 "wp-sync-db"
             ],
             "time": "2016-03-07 16:34:12"
+        },
+        {
+            "name": "wpackagist-plugin/advanced-menu-widget",
+            "version": "0.4.1",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/advanced-menu-widget/",
+                "reference": "trunk"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/advanced-menu-widget.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/advanced-menu-widget/"
         },
         {
             "name": "wpackagist-plugin/image-widget",
