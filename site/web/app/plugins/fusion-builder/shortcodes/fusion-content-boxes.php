@@ -876,7 +876,7 @@ class FusionSC_ContentBoxes {
 
 				$attr['class'] .= ' circle-no';
 
-				$attr['style'] .= 'background-color:transparent;border-color:transparent;height:auto;width: ' . self::$parent_args['icon_size'] . 'px;line-height:normal;';
+				$attr['style'] .= 'background-color:transparent;border-color:transparent;height:auto;width: ' . FusionBuilder::get_value_with_unit( self::$parent_args['icon_size'] ) . ';line-height:normal;';
 
 				if ( 'icon-boxed' === self::$parent_args['layout'] ) {
 					$attr['style'] .= 'position:relative;left:auto;right:auto;top:auto;margin-left:auto;margin-right:auto;';
@@ -1333,11 +1333,14 @@ function fusion_element_content_boxes() {
 				),
 			),
 			array(
-				'type'        => 'textfield',
+				'type'        => 'range',
 				'heading'     => esc_attr__( 'Icon Size', 'fusion-builder' ),
-				'description' => esc_attr__( 'Controls the size of the icon.  In pixels ex: 18px.', 'fusion-builder' ),
+				'description' => esc_attr__( 'Controls the size of the icon. In pixels.', 'fusion-builder' ),
 				'param_name'  => 'icon_size',
 				'value'       => '',
+				'min'         => '0',
+				'max'         => '250',
+				'step'        => '1',
 			),
 			array(
 				'type'        => 'select',

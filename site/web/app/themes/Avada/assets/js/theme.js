@@ -3907,6 +3907,10 @@ jQuery( window ).load( function() {
 						compareWidth = jQuery( thisTFSlider ).parent().parent().parent().width();
 						if ( 1 <= jQuery( thisTFSlider ).parents( '.post-content' ).length ) {
 							compareWidth = jQuery( thisTFSlider ).width();
+
+							if ( jQuery( thisTFSlider ).parents( '.tab-content' ).length ) {
+								compareWidth = jQuery( thisTFSlider ).parents( '.tab-content' ).width() - 60;
+							}
 						}
 						sliderHeight = aspectRatio * compareWidth;
 
@@ -4307,6 +4311,10 @@ jQuery( window ).load( function() {
 						compareWidth = jQuery( thisTFSlider ).parent().parent().parent().width();
 						if ( 1 <= jQuery( thisTFSlider ).parents( '.post-content' ).length ) {
 							compareWidth = jQuery( thisTFSlider ).width();
+
+							if ( jQuery( thisTFSlider ).parents( '.tab-content' ).length ) {
+								compareWidth = jQuery( thisTFSlider ).parents( '.tab-content' ).width() - 60;
+							}
 						}
 						sliderHeight = aspectRatio * compareWidth;
 

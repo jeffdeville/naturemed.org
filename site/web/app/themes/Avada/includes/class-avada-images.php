@@ -552,28 +552,37 @@ class Avada_Images {
 		if ( $logo_url ) {
 			$logo_data['url'] = $logo_url;
 
-			if ( false !== strpos( $logo_option_name, 'retina' ) ) {
+			/*
+			 * Get data from normal logo, if we are checking a retina logo.
+			 * Except for the main retina logo, because it can be set witout default one because of BC.
+			 */
+			if ( false !== strpos( $logo_option_name, 'retina' ) && 'logo_retina' !== $logo_option_name ) {
 				$logo_url = Avada_Sanitize::get_url_with_correct_scheme( Avada()->settings->get( str_replace( '_retina', '', $logo_option_name ), 'url' ) );
 			}
 
 			$logo_attachment_data = self::get_attachment_data_from_url( $logo_url );
 
 			if ( $logo_attachment_data ) {
-				$logo_data['width']  = $logo_attachment_data['width'];
-				$logo_data['height'] = $logo_attachment_data['height'];
-			} else {
-				if ( function_exists( 'getimagesize' ) ) {
-					$image_data = @getimagesize( 'https:' . $logo_data['url'] );
-					if ( ! $image_data ) {
-						$image_data = @getimagesize( 'http:' . $logo_data['url'] );
-					}
-					if ( $image_data ) {
-						$logo_data['width']  = absint( $image_data[0] );
-						$logo_data['height'] = absint( $image_data[1] );
-						if ( false !== strpos( $logo_option_name, 'retina' ) ) {
-							$logo_data['width']  = absint( $image_data[0] / 2 );
-							$logo_data['height'] = absint( $image_data[1] / 2 );
-						}
+				// For the main retina logo, we have to set the sizes correctly, for all others they are correct.
+				if ( 'logo_retina' === $logo_option_name ) {
+					$logo_data['width']  = $logo_attachment_data['width'] / 2;
+					$logo_data['height'] = $logo_attachment_data['height'] / 2;
+				} else {
+					$logo_data['width']  = $logo_attachment_data['width'];
+					$logo_data['height'] = $logo_attachment_data['height'];
+				}
+				// Fallback if getimagesize is available.
+			} elseif ( function_exists( 'getimagesize' ) ) {
+				$image_data = @getimagesize( 'https:' . $logo_data['url'] );
+				if ( ! $image_data ) {
+					$image_data = @getimagesize( 'http:' . $logo_data['url'] );
+				}
+				if ( $image_data ) {
+					$logo_data['width']  = absint( $image_data[0] );
+					$logo_data['height'] = absint( $image_data[1] );
+					if ( false !== strpos( $logo_option_name, 'retina' ) ) {
+						$logo_data['width']  = absint( $image_data[0] / 2 );
+						$logo_data['height'] = absint( $image_data[1] / 2 );
 					}
 				}
 			}
