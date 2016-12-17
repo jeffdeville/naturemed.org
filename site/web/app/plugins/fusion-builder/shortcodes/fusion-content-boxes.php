@@ -344,6 +344,7 @@ class FusionSC_ContentBoxes {
 				'outercirclebordersize'  => self::$parent_args['outercirclebordersize'],
 				'icon'                   => '',
 				'iconcolor'              => self::$parent_args['iconcolor'],
+				'iconflip'               => '',
 				'iconrotate'             => '',
 				'iconspin'               => '',
 				'image'                  => '',
@@ -885,6 +886,10 @@ class FusionSC_ContentBoxes {
 
 			if ( self::$child_args['iconcolor'] ) {
 				$attr['style'] .= 'color:' . self::$child_args['iconcolor'] . ';';
+			}
+
+			if ( self::$child_args['iconflip'] ) {
+				$attr['class'] .= ' fa-flip-' . self::$child_args['iconflip'];
 			}
 
 			if ( self::$child_args['iconrotate'] ) {
